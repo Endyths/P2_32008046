@@ -42,7 +42,7 @@ section {
 
 article {
   background-color: #34495E; 
-  padding: 20px;
+  padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -100,7 +100,7 @@ button:hover {
 
 .columIzq{ 
   width: 30%;
-  margin-right: 20px;
+  margin-right: 10px;
   background: #34495E; 
   border-radius: 10px;
   text-align: center;
