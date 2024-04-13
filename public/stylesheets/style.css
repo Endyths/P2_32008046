@@ -1,27 +1,26 @@
 body {
   font-family: Arial, sans-serif, 'Times New Roman', Times, serif;
-  color: #070707;
-  background-color: #add8e6;
+  color: #FFFFFF; 
+  background-color: #8a8484fb; 
   padding: 20px;
 }
-
 
 header {
   text-align: center;
   padding: 10px;
-  background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); 
-  color: #000000; 
+  background: #2C3E50; 
+  color: #FFFFFF;
   border-radius: 10px;
 }
 
 h1 {
   font-size: 2em;
-  
+  color: #FFFFFF; 
 }
 
 h2 {
   font-size: 1.5em;
-  color: #000000;
+  color: #FFFFFF; 
   margin-top: 20px;
   font-style: italic;
   text-align: center;
@@ -29,11 +28,12 @@ h2 {
 
 h3 {
   font-size: 1.2em;
-  color: #333;
+  color: #FFFFFF; 
 }
 
 p {
   line-height: 1;
+  color: #FFFFFF; 
 }
 
 section {
@@ -41,7 +41,7 @@ section {
 }
 
 article {
-  background-color: #d8d8d8;
+  background-color: #34495E; 
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -53,7 +53,7 @@ ul {
   font-size: 20px;
   font-weight: bold;
   width: auto;
-  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  background: #34495E;
   border-radius: 10px;
   text-align: center;
   padding: 2px;
@@ -61,20 +61,38 @@ ul {
 
 li{
   padding: 10px;
+  color: #FFFFFF;
 }
 
+button{
+  border: none;
+  background: none; 
+}
+
+img{
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
 .subtitulo {
   display: flex;
   justify-content: center;
   gap: 20px;
-  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  background: #34495E; 
   font-size: 20px;
   font-weight: bold;
   border-radius: 10px;
 }
 
 .ingSub {
-  color: #000000;
+  color: #FFFFFF; 
   font-weight: bold;
   font-style: italic;
   font-size: 20px;
@@ -83,7 +101,7 @@ li{
 .columIzq{ 
   width: 30%;
   margin-right: 20px;
-  background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); 
+  background: #34495E; 
   border-radius: 10px;
   text-align: center;
 }
@@ -101,7 +119,7 @@ li{
   justify-content: center;
   padding: 5px;
   gap: 100px;
-  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  background: #34495E; 
   height: 30%;
   border-radius: 10px;
 }
@@ -110,19 +128,6 @@ li{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-button{
-  border: none;
-  background: none; 
-}
-
-img{
-  width: 50px;
-  height: 50px;
-  background: none;
-  border: none;
-  border-radius: 10px;
 }
 
 @media (max-width: 600px) {
