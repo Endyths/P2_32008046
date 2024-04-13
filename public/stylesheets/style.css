@@ -1,8 +1,152 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif, 'Times New Roman', Times, serif;
+  color: #070707;
+  background-color: #add8e6;
+  padding: 20px;
 }
 
-a {
-  color: #00B7FF;
+
+header {
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); 
+  color: #000000; 
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #000000;
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+p {
+  line-height: 1;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+article {
+  background-color: #d8d8d8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  font-size: 20px;
+  font-weight: bold;
+  width: auto;
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  border-radius: 10px;
+  text-align: center;
+  padding: 2px;
+}
+
+li{
+  padding: 10px;
+}
+
+.subtitulo {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.ingSub {
+  color: #000000;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.columIzq{ 
+  width: 30%;
+  margin-right: 20px;
+  background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); 
+  border-radius: 10px;
+  text-align: center;
+}
+
+.columDere{
+  width: 70%;
+}
+
+.conteiner{
+  display: flex;
+}
+
+.iconos {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  gap: 100px;
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  height: 30%;
+  border-radius: 10px;
+}
+
+.columDere section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button{
+  border: none;
+  background: none; 
+}
+
+img{
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+      font-size: 18px;
+  }
+  h1 {
+      font-size: 1.5em;
+  }
+  h2 {
+      font-size: 1.2em;
+  }
+  h3 {
+      font-size: 1em;
+  }
+  .conteiner {
+      flex-direction: column;
+  }
+  .columIzq, .columDere {
+      width: 100%;
+  }
+  .iconos {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
