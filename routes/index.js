@@ -10,5 +10,5 @@ var router = express.Router();
 
 router.get("/", indexController);
 
-router.post("/form-contacto", contactosController.add);
+router.post('/form-contacto', contactosController.add);
 module.exports = router;

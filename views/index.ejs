@@ -120,7 +120,7 @@
 
 <footer>
   <div class="contacto">
-    <form id="contacto-form" >
+    <form id="contacto-form" method="post" action='/form-contacto' >
       <input type="email" name="email" id="email" placeholder="email" />
       <input type="text" name="name" id="name" placeholder="nombre"  />
       <textarea
@@ -131,27 +131,10 @@
         rows="10"
         placeholder="comentario"
       ></textarea>
-      <button type="button" id="submit-btn">Enviar</button>
+      <input type="submit" id="submit-btn" placeholder="enviar">
     </form>
   </div>
-  
-  <script>
-  document.getElementById('submit-btn').addEventListener('click', async () => {
-    const form = document.getElementById('contacto-form');
-    const formData = new FormData(form);
-  
-    const response = await fetch("/form-contacto", {
-      method: 'POST',
-      body: formData,
-    });
-  
-    if (response.ok) {
-      console.log('Formulario enviado con éxito');
-    } else {
-      console.error('Error al enviar el formulario');
-    }
-  });
-  </script>
-  </footer>
+</footer>
+
 </body>
 </html>

@@ -11,10 +11,13 @@ class ContactosController {
 
     const { email, name, mensaje } = req.body;
 
-    if (!email || !name || !mensaje) {
+    if (!email || !name ) {
       res.status(400).send("Faltan campos requeridos");
       return;
+    }else {
+      res.status(200).send("Enviado con exito")
     }
+    
 
     // Guardar los datos del formulario
     const ip = req.ip;
@@ -28,7 +31,7 @@ class ContactosController {
     console.log(contactos);
 
     // Redireccionar al usuario a una página de confirmación
-    res.redirect("/");
+   
   }
 }
 
