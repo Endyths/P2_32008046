@@ -13,7 +13,7 @@ class ContactosModel {
     });
 
     this.db.run(
-      "CREATE TABLE IF NOT EXISTS contactos (email TEXT, name TEXT, mensaje TEXT, ip TEXT, fecha TEXT, id INTEGER PRIMARY KEY AUTOINCREMENT)",
+      "CREATE TABLE IF NOT EXISTS contactos (email TEXT, name TEXT, mensaje TEXT, ip TEXT NOT NULL, fecha TEXT, id INTEGER PRIMARY KEY AUTOINCREMENT)",
       (err) => {
         if (err) {
           console.error(err.message);
