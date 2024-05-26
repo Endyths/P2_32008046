@@ -20,6 +20,14 @@ class ContactosModel {
         }
       }
     );
+    this.db.run(
+      "ALTER TABLE contactos ADD COLUMN  IF NOT EXISTS pais TEXT",
+      (err) => {
+        if (err) {
+          console.error(err.message)
+        }
+      }
+    )
   }
 
   crearContacto(email, name, mensaje, ip, fecha) {
