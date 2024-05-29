@@ -139,12 +139,12 @@
         rows="10"
         placeholder="comentario"
       ></textarea>
-      <div class="g-recaptcha" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+      <div class="g-recaptcha" data-sitekey="%= process.env.RECAPTCHA_SITE_KEY %>"></div>
       <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
       <input type="submit" id="submit-btn" placeholder="enviar">
     </form>
   </div>
 </footer>
-<script src="../public/javascripts/contactos.js"></script>
+
 </body>
 </html>
