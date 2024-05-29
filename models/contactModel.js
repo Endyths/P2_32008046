@@ -21,7 +21,7 @@ class ContactosModel {
       }
     );
     this.db.run(
-      "ALTER TABLE contactos ADD COLUMN  IF NOT EXISTS pais TEXT",
+      "ALTER TABLE contactos ADD COLUMN IF NOT EXISTS pais TEXT",
       (err) => {
         if (err) {
           console.error(err.message)

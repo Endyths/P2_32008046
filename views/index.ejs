@@ -4,13 +4,14 @@
     <title> CV</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=${process.env.Analytics}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEK8B6WMLD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', '${process.env.Analytics}');
+  gtag('config', 'G-MEK8B6WMLD');
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
 <body>
   <header>
@@ -138,10 +139,12 @@
         rows="10"
         placeholder="comentario"
       ></textarea>
+      <div class="g-recaptcha" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+      <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
       <input type="submit" id="submit-btn" placeholder="enviar">
     </form>
   </div>
 </footer>
-
+<script src="../public/javascripts/contactos.js"></script>
 </body>
 </html>
