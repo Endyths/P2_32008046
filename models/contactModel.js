@@ -24,7 +24,7 @@ class ContactosModel {
 
   async crearContacto(email, name, mensaje, ip, fecha) {
     try {
-      // Obtener el nombre del país de la dirección IP
+      // Obtener el nombre del país de la dirección IP utilizando la API ipapi.co
       const pais = await this.obtenerPais(ip);
 
       // Insertar el nuevo contacto en la base de datos
@@ -69,4 +69,4 @@ class ContactosModel {
   }
 }
 
-module.exports = ContactosModel;
+module.exports = ContactosModel
