@@ -11,9 +11,14 @@
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
+    "esm": "^3.2.25",
     "express": "^4.19.2",
     "http-errors": "~1.6.3",
+    "ipapi.co": "^0.3.0",
+    "ipstack": "^0.1.1",
     "morgan": "~1.9.1",
+    "node-fetch": "^3.3.2",
+    "rimraf": "^5.0.7",
     "sqlite3": "^5.1.7"
   }
 }

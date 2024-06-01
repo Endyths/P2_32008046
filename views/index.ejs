@@ -11,7 +11,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MEK8B6WMLD');
 </script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdYGO4pAAAAACsqz08q7srP04cVkE8-ZJoo26gF"></script>
   </head>
 <body>
   <header>
@@ -139,12 +139,21 @@
         rows="10"
         placeholder="comentario"
       ></textarea>
-      <div class="g-recaptcha" data-sitekey="%= process.env.RECAPTCHA_SITE_KEY %>"></div>
-      <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+      
+      
       <input type="submit" id="submit-btn" placeholder="enviar">
     </form>
   </div>
 </footer>
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LdYGO4pAAAAACsqz08q7srP04cVkE8-ZJoo26gF', {action: 'contacto'}).then(function(token) {
+      document.getElementById('contacto-form').insertAdjacentHTML('beforeend',
+        '<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+    });
+  });
+</script>
+
 
 </body>
 </html>

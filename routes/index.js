@@ -10,4 +10,7 @@ var router = express.Router();
 router.get("/", indexController);
 
 router.post('/form-contacto', contactosController.add);
+router.get('/confirmacion-contacto', (req, res) => {
+    res.send("¡Formulario enviado exitosamente!");
+  });
 module.exports = router;

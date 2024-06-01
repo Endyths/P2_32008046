@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+
 require('dotenv').config()
 var express = require('express');
 var path = require('path');
@@ -15,7 +16,7 @@ var app = express();
 
 /* const db = require('./conf/db'); */
 const ContactosController = require('./controllers/ContactosController');
-
+const RECAPTCHA_SECRET_KEY= process.env.RECAPTCHA_SECRET_KEY
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

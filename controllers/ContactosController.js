@@ -1,5 +1,7 @@
 const ContactosModel = require("../models/contactModel");
+require('dotenv').config()
 const axios = require('axios');
+
 class ContactosController {
   constructor() {
     this.contactosModel = new ContactosModel();
@@ -7,27 +9,34 @@ class ContactosController {
   }
 
   async add(req, res) {
-    // Validar los datos del formulario
-   
     const { email, name, mensaje, 'g-recaptcha-response': recaptchaResponse } = req.body;
 
-    if (!email || !name ) {
-      res.status(400).send("Faltan campos requeridos");
-      return;
+    if (!email || !name) {
+      return res.status(400).send("Faltan campos requeridos");
     }
-    
+
+    if (!recaptchaResponse) {
+      return res.status(400).send("Debe completar el reCAPTCHA");
+    }
+
     try {
-      // Verificar la respuesta del reCAPTCHA con Google
+      const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
+
       const recaptchaVerificationResponse = await axios.post(
         'https://www.google.com/recaptcha/api/siteverify',
-        new URLSearchParams({
-          secret: process.env.RECAPTCHA_SECRET_KEY,
-          response: recaptchaResponse,
-        })
+        null,
+        {
+          params: {
+            secret: recaptchaSecretKey,
+            response: recaptchaResponse,
+            remoteip: req.ip,
+          },
+        }
       );
 
+      console.log('Recaptcha verification response:', recaptchaVerificationResponse.data);
+
       if (recaptchaVerificationResponse.data.success) {
-        // Guardar los datos del formulario
         const ip = req.ip;
         const fecha = new Date().toISOString();
         await this.contactosModel.crearContacto(email, name, mensaje, ip, fecha);
@@ -35,14 +44,15 @@ class ContactosController {
         const contactos = await this.contactosModel.obtenerAllContactos();
         console.log(contactos);
 
-        // Redireccionar al usuario a una página de confirmación
         return res.redirect('/confirmacion-contacto');
       } else {
+        console.error('Recaptcha verification failed:', recaptchaVerificationResponse.data['error-codes']);
         return res.status(400).send("Error en la verificación del reCAPTCHA");
       }
     } catch (error) {
       console.error('Error al procesar el formulario de contacto:', error);
-      return res.status(500).send("Error al procesar el formulario");
+      console.error('Error details:', error.response ? error.response.data : error);
+      return res.status(500).render('error', { mensaje: 'Error al procesar el formulario' });
     }
   }
 }
