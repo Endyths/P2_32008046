@@ -1,6 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
-const ipapi = require('ipapi.co');
 const { promisify } = require("util");
+const geoip = require("geoip-lite");
 
 class ContactosModel {
   constructor() {
@@ -22,13 +22,11 @@ class ContactosModel {
     );
   }
 
-  async crearContacto(email, name, mensaje, ip, fecha) {
+  async crearContacto(email, name, mensaje, ip) {
     try {
-      // Obtener el nombre del país de la dirección IP utilizando la API ipapi.co
+      const fecha = this.obtenerFecha();
       const pais = await this.obtenerPais(ip);
-      console.log('Pais:', pais)
-      // Insertar el nuevo contacto en la base de datos
-      return new Promise((resolve, reject) => {
+      return await new Promise((resolve, reject) => {
         const sql = `INSERT INTO contactos (email, name, mensaje, ip, fecha, pais) VALUES (?, ?, ?, ?, ?, ?)`;
         this.db.run(sql, [email, name, mensaje, ip, fecha, pais], function (err) {
           if (err) {
@@ -47,13 +45,21 @@ class ContactosModel {
 
   async obtenerPais(ip) {
     try {
-      // Utilizar la API ipapi.co para obtener el nombre del país
-      const response = await ipapi.location(ip, "json");
-      return response.country_name;
-    } catch (error) {
-      console.error('Error al obtener el país:', error);
-      return 'Unknown';
+      const geoipData = geoip.lookup(ip);
+      if (geoipData && geoipData.country) {
+        return geoipData.country;
+      } else {
+        return "Unknown";
+      }
+    } catch (err) {
+      console.error(err);
+      return "Unknown";
     }
+  }
+
+  obtenerFecha() {
+    const fechaActual = new Date();
+    return fechaActual.toLocaleString();
   }
 
   async obtenerContacto(email) {
@@ -69,4 +75,4 @@ class ContactosModel {
   }
 }
 
-module.exports = ContactosModel
+module.exports = ContactosModel;
