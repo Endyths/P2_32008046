@@ -45,7 +45,7 @@ class ContactosModel {
 
   async obtenerPais(ip) {
     try {
-      const geoipData = geoip.lookup(req.ip);
+      const geoipData = geoip.lookup(ip);
       if (geoipData && geoipData.country) {
         return geoipData.country;
       } else {
