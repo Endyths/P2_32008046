@@ -26,7 +26,7 @@ class ContactosModel {
     try {
       // Obtener el nombre del país de la dirección IP utilizando la API ipapi.co
       const pais = await this.obtenerPais(ip);
-
+      console.log('Pais:', pais)
       // Insertar el nuevo contacto en la base de datos
       return new Promise((resolve, reject) => {
         const sql = `INSERT INTO contactos (email, name, mensaje, ip, fecha, pais) VALUES (?, ?, ?, ?, ?, ?)`;
