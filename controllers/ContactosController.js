@@ -1,11 +1,39 @@
 const ContactosModel = require("../models/contactModel");
 require('dotenv').config()
 const axios = require('axios');
+const nodemailer = require ('nodemailer');
+
+const EMAILU = process.env.EMAILU;
+const EMAILP = process.env.EMAILP;
+const EMAIL1 = process.env.EMAIL1;
+const EMAIL2 = process.env.EMAIL2;
 
 class ContactosController {
   constructor() {
     this.contactosModel = new ContactosModel();
     this.add = this.add.bind(this);
+    this.transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: EMAILU,
+        pass: EMAILP
+      }
+    });
+  }
+  enviarCorreo(email, nombre, mensaje, EMAILU, EMAIL1, EMAIL2) {
+    const mailOptions = {
+      from: EMAILU,
+      to: [EMAIL1, EMAIL2], // Agrega más destinatarios si es necesario
+      subject: 'Nuevo registro de usuario',
+      text: 'Nombre: '+nombre+'\nEmail: '+email+'\nMensaje: '+mensaje
+    };
+    this.transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Correo enviado: ${info.response}');
+      }
+    });
   }
 
   async add(req, res) {
@@ -43,6 +71,8 @@ class ContactosController {
 
         const contactos = await this.contactosModel.obtenerAllContactos();
         console.log(contactos);
+        
+        await this.enviarCorreo(email, name, mensaje, EMAILU, EMAIL1, EMAIL2);
 
         return res.redirect('/confirmacion-contacto');
       } else {
