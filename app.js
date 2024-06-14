@@ -71,7 +71,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.Client_Id,
   clientSecret: process.env.SecretClient,
-  callbackURL: "http://localhost:3000/contactos"
+  callbackURL: "https://p2-32008046.onrender.com/auth/google/contactos"
 },
 function(accessToken, refreshToken, profile, done) {
   // Aquí debería ir la lógica para buscar o crear el usuario en la base de datos
@@ -88,7 +88,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect("http://localhost:3000/auth/google/contactos");
+    res.redirect("https://p2-32008046.onrender.com/contactos");
   });
 
 /* const db = require('./conf/db'); */
