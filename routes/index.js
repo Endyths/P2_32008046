@@ -39,6 +39,15 @@ router.get('/confirmacion-contacto', (req, res) => {
         .confirmation-message p {
           color: #666666;
         }
+           a {
+    display: block;
+    margin-top: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
       </style>
     </head>
     <body>

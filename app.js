@@ -40,17 +40,17 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     // Aquí debería ir la lógica para buscar el usuario en la base de datos
     // Por simplicidad, estamos usando un usuario estático
-    const user = { id: 1, username: 'QuieroPasarProgramacio2', password: '$2a$10$SJuMnNLO27UL/xAgReRog.dH70EbUf06kxM0aj01ptkTFsl1M3Zzm' };
+    const user = { id: 1, username: 'QuieroPasarProgramacion2', password: '$2a$10$SJuMnNLO27UL/xAgReRog.dH70EbUf06kxM0aj01ptkTFsl1M3Zzm' };
 
     if (username !== user.username) {
-      return done(null, false, { message: 'Incorrect username.' });
+      return done(null, false, { message: 'Nombre de Usuario incorrecto' });
     }
 
     bcrypt.compare(password, user.password, function(err, res) {
       if (res) {
         return done(null, user);
       } else {
-        return done(null, false, { message: 'Incorrect password.' });
+        return done(null, false, { message: 'Contraseña incorrecta' });
       }
     });
   }
