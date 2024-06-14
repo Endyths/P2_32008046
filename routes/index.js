@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
+const authController = require('../controllers/AuthController');
 const contactosController = require('../controllers/ContactosController');
 const contactoControllers= new contactosController()
 
