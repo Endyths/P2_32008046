@@ -64,7 +64,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   // Aquí debería ir la lógica para buscar el usuario en la base de datos
   // Por simplicidad, estamos usando un usuario estático
-  const user = { id: 1, username: 'user', password: 'password' };
+  const user = { id: 1, username: 'QuieroPasarProgramacion2' };
   done(null, user);
 });
 
