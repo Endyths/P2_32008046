@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactos</title>
+  <link rel='stylesheet' href='/stylesheets/stylesContactos.css' />
+</head>
+<body>
+  <h1>Lista de Contactos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Mensaje</th>
+        <th>IP</th>
+        <th>Fecha</th>
+        <th>País</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contactos.forEach(contacto => { %>
+        <tr>
+          <td><%= contacto.email %></td>
+          <td><%= contacto.name %></td>
+          <td><%= contacto.mensaje %></td>
+          <td><%= contacto.ip %></td>
+          <td><%= contacto.fecha %></td>
+          <td><%= contacto.pais %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

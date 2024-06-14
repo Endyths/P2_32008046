@@ -1,4 +1,4 @@
-const ContactosModel = require("../models/contactModel");
+const ContactoModel = require("../models/contactModel");
 require('dotenv').config()
 const axios = require('axios');
 const nodemailer = require ('nodemailer');
@@ -10,8 +10,10 @@ const EMAIL2 = process.env.EMAIL2;
 
 class ContactosController {
   constructor() {
-    this.contactosModel = new ContactosModel();
+    this.contactosModel = new ContactoModel();
+    console.log('ContactosModel inicializado:', this.contactosModel); // Verificar inicialización
     this.add = this.add.bind(this);
+    this.list = this.list.bind(this)
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -85,6 +87,17 @@ class ContactosController {
       return res.status(500).render('error', { mensaje: 'Error al procesar el formulario' });
     }
   }
+  async list(req, res) {
+    try {
+      console.log('ContactosModel en list:', this.contactosModel); // Verificar inicialización
+      const contactos = await this.contactosModel.obtenerAllContactos();
+      res.render('contactos', { contactos });
+    } catch (error) {
+      console.error("Error al listar los contactos:", error);
+      res.status(500).render('error', { mensaje: 'Error al listar los contactos' });
+    }
+  }
 }
+
 
 module.exports = ContactosController;
