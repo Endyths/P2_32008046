@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Configuración de sesión
 app.use(session({
-  secret: process.env.clavesecreta,
+  secret: "TomatesPicados",
   resave: false,
   saveUninitialized: false
 }));
