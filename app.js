@@ -85,7 +85,8 @@ passport.use(new GitHubStrategy({
 function(accessToken, refreshToken, profile, done) {
   // En esta función, puedes buscar al usuario en tu base de datos y devolver
   // el usuario (o crear uno nuevo si no existe).
-  return done(null, profile);
+  const user = { id: profile.id, username: profile.displayName };
+  return done(null, user);
 }
 ));
 
