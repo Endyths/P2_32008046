@@ -1,7 +1,8 @@
 const sqlite3 = require("sqlite3").verbose();
 const { promisify } = require("util");
 const geoip = require("geoip-lite");
-const { getName } = require('country-list');
+const countries = require('i18n-iso-countries');
+countries.registerLocale(require("i18n-iso-countries/langs/es.json"));
 
 class ContactosModel {
   constructor() {
@@ -48,7 +49,7 @@ class ContactosModel {
     try {
       const geoipData = geoip.lookup(ip);
       if (geoipData && geoipData.country) {
-        const countryName = getName(geoipData.country);
+        const countryName = countries.getName(geoipData.country, "es")
         return countryName || "Unknown";
       } else {
         return "Unknown";

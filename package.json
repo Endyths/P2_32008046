@@ -20,6 +20,7 @@
     "express-session": "^1.18.0",
     "geoip-lite": "^1.4.10",
     "http-errors": "~1.6.3",
+    "i18n-iso-countries": "^7.11.2",
     "ipapi.co": "^0.3.0",
     "ipstack": "^0.1.1",
     "morgan": "~1.9.1",
