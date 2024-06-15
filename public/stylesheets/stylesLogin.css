@@ -37,6 +37,7 @@ form {
   max-width: 400px;
   width: 100%;
 }
+
 form div {
   margin-bottom: 15px;
 }
@@ -50,17 +51,11 @@ form label {
 
 form input,
 form textarea {
-  width: calc(100% - 20px); /* Deja espacio para el padding */
+  width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el ancho total */
-}
-
-form input:focus,
-form textarea:focus {
-  border-color: #2c3e50;
-  outline: none;
+  box-sizing: border-box;
 }
 
 form button,
@@ -92,6 +87,61 @@ form a:hover {
   text-decoration: underline;
 }
 
+.social-login-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#google-login,
+#github-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 8px 15px;
+  background: #ffffff;
+  color: #757575;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s, border-color 0.3s;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+#google-login img,
+#github-login img {
+  height: 18px;
+  width: 18px;
+  margin-right: 10px;
+}
+
+#google-login:hover,
+#github-login:hover {
+  background: #f2f2f2;
+  border-color: #bcbcbc;
+}
+
+#google-login:focus,
+#github-login:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+#github-login {
+  background: #333333;
+  color: #ffffff;
+  border-color: #333333;
+}
+
+#github-login:hover {
+  background: #24292e;
+  border-color: #1b1f23;
+}
+
 @media (max-width: 600px) {
   body {
     padding: 10px;
@@ -108,5 +158,17 @@ form a:hover {
   form button,
   form input[type="submit"] {
     padding: 8px;
+  }
+
+  #google-login,
+  #github-login {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+
+  #google-login img,
+  #github-login img {
+    height: 16px;
+    width: 16px;
   }
 }

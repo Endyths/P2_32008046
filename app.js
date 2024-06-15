@@ -10,6 +10,7 @@ const passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const flash = require('connect-flash');
 
 
@@ -24,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Configuración de sesión
 app.use(session({
-  secret: 'TomatesPicados',
+  secret: process.env.clavesecreta,
   resave: false,
   saveUninitialized: false
 }));
@@ -67,6 +68,35 @@ passport.deserializeUser(function(id, done) {
   const user = { id: 1, username: 'QuieroPasarProgramacion2' };
   done(null, user);
 });
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: "https://p2-32008046.onrender.com/auth/google/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  // En esta función, puedes buscar al usuario en tu base de datos y devolver
+  // el usuario (o crear uno nuevo si no existe).
+  return done(null, profile);
+}
+));
+
+app.get('/auth/github',
+  passport.authenticate('github', { scope: ['user:email'] }));
+
+app.get('/auth/github/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect("https://p2-32008046.onrender.com/contactos");
+  });
 
 passport.use(new GoogleStrategy({
   clientID: process.env.Client_Id,
