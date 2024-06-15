@@ -93,7 +93,7 @@ app.get('/auth/github',
   passport.authenticate('github', { scope: ['user:email'] }));
 
 app.get('/auth/github/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect("https://p2-32008046.onrender.com/contactos");
   });
