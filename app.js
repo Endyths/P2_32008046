@@ -80,7 +80,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: "https://p2-32008046.onrender.com/auth/google/callback"
+  callbackURL: "https://p2-32008046.onrender.com/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, done) {
   // En esta función, puedes buscar al usuario en tu base de datos y devolver
